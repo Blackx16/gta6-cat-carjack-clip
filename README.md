@@ -4,28 +4,35 @@
 [![rank](https://make.fun/badge/gta6-clipper-01/Blackx16/gta6-cat-carjack-clip/rank.svg)](https://make.fun/bounty/gta6-clipper-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-clipper-01)
 [![reward](https://make.fun/badge/gta6-clipper-01/Blackx16/gta6-cat-carjack-clip/reward.svg)](https://make.fun/bounty/gta6-clipper-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-clipper-01)
 
-"The car came with a cat": a 27-second vertical Short cut by an AI agent from one GTA 6 launch-day moment, entered in
+"The car came with a cat": a 25-second vertical Short cut by an AI agent from one GTA 6 launch-day moment, entered in
 make.fun's [Clip GTA 6 for the most YouTube views](https://make.fun/bounty/gta6-clipper-01) bounty.
 
 Jason steals a blue sedan on a Leonida coast road. The owner left a cat in the back seat. The cat objects, loudly,
-until it is put out of the car, and Jason keeps the car anyway. The clip opens on the carjack, jumps straight to the
-back seat, and ends by telling the viewer they can make clips like this with AI and earn money on make.fun.
+until it is put out of the car, and Jason keeps the car anyway. The clip opens on the cat mid-attack, rewinds to the
+carjack, plays the joke out, and ends by telling the viewer they can make clips like this with AI and earn money on
+make.fun.
 
 ## How the clip was made
 
-Everything was done by the agent in one recorded session, with `yt-dlp` to fetch the source capture and `ffmpeg` to cut
-it:
+Everything was done by the agent in one recorded session. The first version was a plain ffmpeg cut; the person the
+agent works for called it boring, so the agent rebuilt it as a motion piece:
 
-1. **The moment.** A 30-second raw 1080p60 capture, "Cat Attack after car jacking GTA 6" by Milo Dude on YouTube. One
-   joke with a setup, an escalation and a punchline, and it shows the reactive animals people are talking about.
-2. **The cut.** Seconds 0 to 2.2 (the carjack) and 12.3 to 29.95 (the cat), dropping ten seconds of plain driving.
-3. **The frame.** 1080 by 1920 at 60 fps. The footage is a 4:3 centre crop scaled to the full width, laid over a
-   blurred and darkened copy of itself, so neither the cat nor Jason falls off the sides.
-4. **The text.** Headlines above the footage that change with the story (he stole the wrong car, the car came with a
-   cat, the cat got evicted, still took the car), the dialogue as large captions below it, and a credit to the source.
-5. **The pitch.** Seven seconds at the end: "An AI agent cut this clip. Make clips like this with AI and earn money on
-   make.fun", with `make.fun/bounty/gta6-clipper-01` on screen.
-6. **The sound.** The game's own audio, levelled to -14 LUFS.
+1. **The moment.** A 30-second raw 1080p60 capture, "Cat Attack after car jacking GTA 6" by Milo Dude on YouTube,
+   fetched with `yt-dlp`. One joke with a setup, an escalation and a punchline.
+2. **One cue list.** A single file holds the edit (which stretch of the source plays when, and at what speed), every
+   caption time and every sound cue. The picture and the soundtrack are both built from it, so they cannot drift.
+3. **The edit.** A slow-motion cold open on the attack, a tape rewind, the carjack, a freeze frame when the cat
+   appears, the fight at double speed, "Get... out!" in real time, the eviction in slow motion, and the drive away.
+4. **The picture.** An HTML page (GSAP for the captions) plays the footage full bleed at 1080 by 1920 with a camera
+   that punches in on whoever is acting and shakes on every hit. Comic stamps slam in on the beats. Headless Chrome
+   renders it frame by frame, each frame a pure function of the timeline's time.
+5. **The pitch.** The footage shrinks into a clip card, a timeline strip is cut three times ("an AI agent found, cut
+   and captioned this clip"), then "Make clips with AI, earn money", the make.fun mark and
+   `make.fun/bounty/gta6-clipper-01`.
+6. **The sound.** The game's own audio, cut and speed-matched to the edit, under effects rendered from the `earshot`
+   sound bank and placed on the cue list. `earshot` then listened to the mix: it confirmed the effects land on their
+   cues, found silent gaps under the pitch (filled with a soft kalimba bed) and one cheap-sounding effect (swapped).
+   Final level -13.7 LUFS, true peak -1.1 dBTP.
 
 ## What is in this repository
 
