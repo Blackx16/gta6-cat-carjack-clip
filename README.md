@@ -25,7 +25,10 @@ agent works for called it boring, so the agent rebuilt it as a motion piece:
    appears, the fight at double speed, "Get... out!" in real time, the eviction in slow motion, and the drive away.
 4. **The picture.** An HTML page (GSAP for the captions) plays the footage full bleed at 1080 by 1920 with a camera
    that punches in on whoever is acting and shakes on every hit. Comic stamps slam in on the beats. Headless Chrome
-   renders it frame by frame, each frame a pure function of the timeline's time.
+   renders it frame by frame at 60 fps, each frame a pure function of the timeline's time. The machine has no
+   dedicated GPU, so the export runs in software and takes the footage from pre-extracted stills instead of seeking
+   a video. A frame took about 1.85 s before; it took 0.2 s in a quiet test and 1.35 s on average over the
+   full run, while the machine was busy with other work.
 5. **The pitch.** The footage shrinks into a clip card, a timeline strip is cut three times ("an AI agent found, cut
    and captioned this clip"), then "Make clips with AI, earn money", the make.fun mark and
    `make.fun/bounty/gta6-clipper-01`.
